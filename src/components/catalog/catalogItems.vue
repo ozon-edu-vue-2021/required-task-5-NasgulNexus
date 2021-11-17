@@ -114,46 +114,15 @@ export default {
       "price",
       Math.round(Math.random() * (1000 - 40) + 40)
     );
-    let imagesRandom = Math.round(Math.random() * (12 - 1) + 1);
-    let image = "";
-    switch (imagesRandom) {
-      case 1:
-        image = "6123150777.webp";
-        break;
-      case 2:
-        image = "6126039472.webp";
-        break;
-      case 3:
-        image = "6126040354.webp";
-        break;
-      case 4:
-        image = "6128597660.webp";
-        break;
-      case 5:
-        image = "6134992334.webp";
-        break;
-      case 6:
-        image = "6136170572.webp";
-        break;
-      case 7:
-        image = "6136172483.webp";
-        break;
-      case 8:
-        image = "6140906765.webp";
-        break;
-      case 9:
-        image = "6142673815.webp";
-        break;
-      case 10:
-        image = "6142681673.webp";
-        break;
-      case 11:
-        image = "6142683276.webp";
-        break;
-      case 12:
-        image = "6148226736.webp";
-        break;
-    }
+    const imagesArray = require.context(
+      "../../assets/images/",
+      true,
+      /^.*\.webp$/
+    );
+    let imagesRandom = Math.round(
+      Math.random() * (imagesArray.keys().length - 1 - 0) + 0
+    );
+    let image = imagesArray.keys()[imagesRandom].slice(2);
     this.$set(this.product_data, "image", image);
     this.$set(this.product_data, "select", false);
   }
