@@ -14,12 +14,6 @@
         v-for="product in PRODUCTS"
         :key="product.id"
         v-bind:product_data="product"
-        @addToCart="addToCart"
-        @addToSelect="addToSelect"
-        @removeToSelect="removeToSelect"
-        @removeToCart="removeToCart"
-        @incrementQuantityCatalog="incrementQuantityCatalog"
-        @dicrementQuantityCatalog="dicrementQuantityCatalog"
       />
     </div>
   </div>
@@ -42,33 +36,7 @@ export default {
     ...mapGetters(["PRODUCTS", "CART", "SELECT"])
   },
   methods: {
-    ...mapActions([
-      "GET_PRODUCTS_FROM_API",
-      "ADD_TO_CART",
-      "ADD_TO_SELECT",
-      "REMOVE_SELECT",
-      "REMOVE_TO_CART",
-      "INCREMENT_QANTITY_CATALOG",
-      "DICREMENT_QANTITY_CATALOG"
-    ]),
-    addToCart(data) {
-      this.ADD_TO_CART(data);
-    },
-    addToSelect(data) {
-      this.ADD_TO_SELECT(data);
-    },
-    removeToSelect(data) {
-      this.REMOVE_SELECT(data);
-    },
-    removeToCart(data) {
-      this.REMOVE_TO_CART(data);
-    },
-    incrementQuantityCatalog(data) {
-      this.INCREMENT_QANTITY_CATALOG(data);
-    },
-    dicrementQuantityCatalog(data) {
-      this.DICREMENT_QANTITY_CATALOG(data);
-    }
+    ...mapActions(["GET_PRODUCTS_FROM_API"])
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API().then(response => {

@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "CatalogItems",
   props: {
@@ -73,23 +74,37 @@ export default {
     }
   },
   methods: {
-    addToCart() {
-      this.$emit("addToCart", this.product_data);
+    ...mapActions([
+      "ADD_TO_CART",
+      "ADD_TO_SELECT",
+      "REMOVE_SELECT",
+      "REMOVE_TO_CART",
+      "INCREMENT_QANTITY_CATALOG",
+      "DICREMENT_QANTITY_CATALOG"
+    ]),
+    addToCart(data) {
+      data = this.product_data;
+      this.ADD_TO_CART(data);
     },
-    addToSelect() {
-      this.$emit("addToSelect", this.product_data);
+    addToSelect(data) {
+      data = this.product_data;
+      this.ADD_TO_SELECT(data);
     },
-    removeToSelect() {
-      this.$emit("removeToSelect", this.product_data);
+    removeToSelect(data) {
+      data = this.product_data;
+      this.REMOVE_SELECT(data);
     },
-    removeToCart() {
-      this.$emit("removeToCart", this.product_data);
+    removeToCart(data) {
+      data = this.product_data;
+      this.REMOVE_TO_CART(data);
     },
-    dicrementQuantityCatalog() {
-      this.$emit("dicrementQuantityCatalog", this.product_data);
+    incrementQuantityCatalog(data) {
+      data = this.product_data;
+      this.INCREMENT_QANTITY_CATALOG(data);
     },
-    incrementQuantityCatalog() {
-      this.$emit("incrementQuantityCatalog", this.product_data);
+    dicrementQuantityCatalog(data) {
+      data = this.product_data;
+      this.DICREMENT_QANTITY_CATALOG(data);
     }
   },
   mounted() {
