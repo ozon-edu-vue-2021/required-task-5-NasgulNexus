@@ -64,14 +64,9 @@ export default {
     },
     clickButtonCheckout() {
       let checkout = "";
-      for (let index of this.cart_data) {
+      for (let item of this.cart_data) {
         checkout =
-          checkout +
-          "Товар  " +
-          index.dish +
-          " в количетсве: " +
-          index.quantity +
-          "; ";
+          checkout + `Товар ${item.dish} в количетсве: ${item.quantity};\n `;
       }
       alert(checkout);
     },
