@@ -4,7 +4,7 @@
     <router-link :to="{ name: 'catalog' }">
       <div class="select__in_to_catalog">Вернуться к каталогу</div>
     </router-link>
-    <div v-if="!select_data.length">В корзине ничего нет</div>
+    <div v-if="!select_data.length">В избранном ничего нет</div>
     <selectItems
       v-for="(item, index) in select_data"
       :key="item.id"

@@ -21,7 +21,8 @@
 
 <script>
 import CatalogItems from "./catalogItems";
-import { mapActions, mapGetters } from "vuex";
+import { GET_PRODUCTS_FROM_API } from "../../vuex/actions/actionsAPI-Request";
+import { mapGetters } from "vuex";
 
 export default {
   name: "catalog",
@@ -35,11 +36,8 @@ export default {
   computed: {
     ...mapGetters(["PRODUCTS", "CART", "SELECT"])
   },
-  methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API"])
-  },
   mounted() {
-    this.GET_PRODUCTS_FROM_API().then(response => {
+    this.$store.dispatch("GET_PRODUCTS_FROM_API").then(response => {
       if (!response.data) {
         console.log("Error");
       }

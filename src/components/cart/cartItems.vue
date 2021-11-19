@@ -13,7 +13,7 @@
     <button class="qauntity__button_dicrement" @click="dicrementQuantity">
       -
     </button>
-    <button class="deleteFromCart" @click="daleteFromCart">
+    <button class="deleteFromCart" @click="deleteFromCart">
       Удалить из корзины
     </button>
   </div>
@@ -47,8 +47,8 @@ export default {
     incrementQuantity() {
       this.$emit("incrementQuantity");
     },
-    daleteFromCart() {
-      this.$emit("daleteFromCart");
+    deleteFromCart() {
+      this.$emit("deleteFromCart");
     }
   }
 };

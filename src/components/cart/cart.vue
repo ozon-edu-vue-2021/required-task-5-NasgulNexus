@@ -9,7 +9,7 @@
       v-for="(item, index) in cart_data"
       :key="item.id"
       :cart_item_data="item"
-      @daleteFromCart="daleteFromCart(index)"
+      @deleteFromCart="deleteFromCart(index)"
       @incrementQuantity="incrementQuantity(index)"
       @dicrementQuantity="dicrementQuantity(index)"
     />
@@ -30,7 +30,11 @@
 
 <script>
 import cartItems from "./cartItems";
-import { mapActions } from "vuex";
+import {
+  DELETE_FROM_CART,
+  INCREMENT_QUANTITY,
+  DICREMENT_QANTITY
+} from "../../vuex/actions/actions";
 
 export default {
   name: "cart",
@@ -54,14 +58,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      "DELETE_FROM_CART",
-      "INCREMENT_QUANTITY",
-      "DICREMENT_QANTITY"
-    ]),
-    daleteFromCart(index) {
-      this.DELETE_FROM_CART(index);
-    },
     clickButtonCheckout() {
       let checkout = "";
       for (let item of this.cart_data) {
@@ -71,10 +67,13 @@ export default {
       alert(checkout);
     },
     incrementQuantity(index) {
-      this.INCREMENT_QUANTITY(index);
+      this.$store.dispatch("INCREMENT_QUANTITY", index);
     },
     dicrementQuantity(index) {
-      this.DICREMENT_QANTITY(index);
+      this.$store.dispatch("DICREMENT_QANTITY", index);
+    },
+    deleteFromCart(index) {
+      this.$store.dispatch("DELETE_FROM_CART", index);
     }
   }
 };
