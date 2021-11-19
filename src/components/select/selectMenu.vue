@@ -16,7 +16,7 @@
 
 <script>
 import selectItems from "./selectItems";
-import { mapActions } from "vuex";
+import {DELETE_FROM_SELECT} from "../../vuex/actions/actions"
 
 export default {
   name: "selectMenu",
@@ -32,9 +32,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["DELETE_FROM_SELECT"]),
     daleteFromSelect(index) {
-      this.DELETE_FROM_SELECT(index);
+      this.$store.dispatch("DELETE_FROM_SELECT",index);
     }
   }
 };
